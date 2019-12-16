@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+{{ template "head" . }}
+
+<body>
+{{ template "header" .}}
+<div class="container">
+<font size="8">店舗作成</font>
+<br>
+{{if .errMsg}}
+<div style="color:red">
+<p> {{.errMsg}} </p>
+</div>
+{{end}}
+<form action="new" method="post" style="width:100%;">
+
+    <div>
+        <p>店舗名</p>
+        <input type="text" name="Storename"></input>
+    </div>
+    
+    <div>
+        <p>住所</p>
+        <input type="text" name="Address"></input>
+    </div>
+    <div>
+        <p>ジャンル</p>
+        <input type="text" name="Genre"></input>
+    </div>
+    <div>
+        <p>電話番号</p>
+        <input type="text" name="Tel"></input>
+    </div>
+    <div>
+        <p>情報</p>
+        <textarea class="text" name="Information" rows="4" cols="40"></textarea>
+    </div>
+    <div>
+        <p>席数</p>
+        <input type="text" name="Tables"></input>
+    </div>
+
+
+    <br>
+
+    <div class="control">
+        <button class="button is-link">Submit</button>
+    </div>
+    </form>
+</div>
+{{ template "footer" .}}
+</body>
+</html>

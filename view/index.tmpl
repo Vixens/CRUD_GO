@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+{{ template "head" . }}
+
+<body >
+{{ template "header" .}}
+<div class="container" >
+<h1>店舗一覧</h1>
+{{if .errMsg}}
+<div style="color:red">
+    <p> {{.errMsg}} </p>
+</div>
+{{end}}
+<table class="table" style="width:100%;">
+    <thead>
+        <tr>
+            <th>StoreID</th>
+            <th>Storename</th>
+            <th>Address</th>
+            <th>Genre</th>
+            <th>Tel</th>
+            <th>Information</th>
+            <th>Tables</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{range .stores}}
+        <tr>
+            <td>{{.StoreID}}</td>
+            <td>{{.Storename}}</td>
+            <td>{{.Address}}</td>
+            <td>{{.Genre}}</td>
+            <td>{{.Tel}}</td>
+            <td>{{.Information}}</td>
+            <td>{{.Tables}}</td>
+            <td> <form action="/delete/{{.ID}}" method="post" style="display:inline;" ><button class="button">delete</button></form></td>
+        </tr>
+        {{end}}
+    </tbody>
+</table>
+{{ template "footer" .}}
+</body>
+</html>
