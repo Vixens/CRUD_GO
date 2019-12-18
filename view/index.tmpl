@@ -22,18 +22,23 @@
             <th>Tel</th>
             <th>Information</th>
             <th>Tables</th>
+            <th>CreatedAt</th>
+            <th>Action</th>
         </tr>
     </thead>
     <tbody>
+    {{.}}
         {{range .stores}}
         <tr>
-            <td>{{.StoreID}}</td>
+            <td>{{.ID}}</td>
             <td>{{.Storename}}</td>
-            <td>{{.Address}}</td>
+            <td>{{.Loc}}</td>
             <td>{{.Genre}}</td>
             <td>{{.Tel}}</td>
             <td>{{.Information}}</td>
             <td>{{.Tables}}</td>
+            <td>{{.CreatedAt.Year}}-{{.CreatedAt.Month}}-{{.CreatedAt.Day}}</td>
+
             <td> <form action="/delete/{{.ID}}" method="post" style="display:inline;" ><button class="button">delete</button></form></td>
         </tr>
         {{end}}

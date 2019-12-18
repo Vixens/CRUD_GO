@@ -35,6 +35,7 @@ func InitDB() *gorm.DB {
 	if conf.Debug {
 		db = db.Debug()
 	}
-	// db.Set("gorm:table_options", "ENGINE=InnoDB")
+	db.Set("gorm:table_options", "ENGINE=InnoDB")
+	// db.AutoMigrate(&Stores)
 	return db
 }

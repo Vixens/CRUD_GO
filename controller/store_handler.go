@@ -21,7 +21,7 @@ func (s *Server) GetStorePage(c *gin.Context) {
 	errMsg := ""
 	stores, err := model.GetAllStores(s.DB)
 	if err != nil {
-		errMsg = "データ取得に失敗しました"
+		errMsg = "エラー発生"
 		stores = []model.Store{}
 	}
 	c.HTML(http.StatusOK, "index.tmpl", gin.H{
@@ -39,7 +39,7 @@ func (s *Server) CreateStoreHandler(c *gin.Context) {
 	store := new(model.Store)
 
 	store.Storename = c.Request.Form["Storename"][0]
-	store.Address = c.Request.Form["Address"][0]
+	store.Loc = c.Request.Form["Loc"][0]
 	store.Genre = c.Request.Form["Genre"][0]
 	store.Tel = c.Request.Form["Tel"][0]
 	store.Information = c.Request.Form["Information"][0]
@@ -50,7 +50,7 @@ func (s *Server) CreateStoreHandler(c *gin.Context) {
 			"errMsg": "empty:Storename",
 		})
 		return
-	} else if store.Address == "" {
+	} else if store.Loc == "" {
 		c.HTML(http.StatusBadRequest, "new.tmpl", gin.H{
 			"errMsg": "empty:Address",
 		})
